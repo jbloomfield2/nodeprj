@@ -3,6 +3,9 @@ var app = express();
 var pg = require('pg');
 var session = require('express-session');
 var connectionString = "postgres://postgres:farcry@localhost:5432/backlog";
+if(process.env.DATABASE_URL)
+    connectionString= process.env.DATABASE_URL;
+
 
 app.use(session({secret:'g83$Ktg8hA*jg83'}));
 

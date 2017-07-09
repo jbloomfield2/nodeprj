@@ -1,0 +1,20 @@
+CREATE DATABASE backlog;
+\c backlog;
+
+CREATE TABLE userdata
+(
+	id SERIAL PRIMARY KEY NOT NULL,
+	username VARCHAR(80) UNIQUE NOT NULL,
+	password VARCHAR(200) UNIQUE NOT NULL
+);
+
+CREATE TABLE item
+(
+	id SERIAL PRIMARY KEY NOT NULL,
+	title VARCHAR(200) UNIQUE NOT NULL,
+	itemtype VARCHAR(80),
+	uid int REFERENCES userdata(id),
+	owned BOOLEAN,
+	complete BOOLEAN,
+	priority BOOLEAN
+);
